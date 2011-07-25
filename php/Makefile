@@ -16,6 +16,15 @@ OPTION_PHP_FPM:=$(OPTION_PHP_FPM) --enable-fpm
 OPTION_PHP_FPM:=$(OPTION_PHP_FPM) --enable-shared
 OPTION_PHP_FPM:=$(OPTION_PHP_FPM) --without-pear
 
+install-php-fpm: build-php-fpm
+	make -C $(TMP_PATH)/php-fpm install
+	cp -f $(TMP_PATH)/php-fpm/sapi/fpm/init.d.php-fpm $(PHP_FPM_DIR)/bin/php-fpm
+	chmod +x $(PHP_FPM_DIR)/bin/php-fpm
+	cp -f $(TMP_PATH)/php-fpm/php.ini-production $(PHP_FPM_DIR)/etc/php.ini
+	mkdir -p $(PHP_FPM_DIR)/etc/php.d
+	cp -f $(PHP_FPM_DIR)/etc/php-fpm.conf.default $(PHP_FPM_DIR)/etc/php-fpm.conf
+	sed -i -e 's/;pid/pid/g' -e 's/;pm.start_servers/pm.start_servers/g' -e 's/;pm.min_spare_servers/pm.min_spare_servers/g' -e 's/;pm.max_spare_servers/pm.max_spare_servers/g' -e 's/;pm.max_requests/pm.max_requests/g' $(PHP_FPM_DIR)/etc/php-fpm.conf
+	touch $@
 build-php-fpm: config-php-fpm
 	make -C $(TMP_PATH)/php-fpm
 	touch $@
@@ -30,7 +39,12 @@ unzip-php-fpm: $(TMP_PATH)/php_sources
 $(TMP_PATH)/php_sources:
 	$(call download,$(url_php),$@)
 	
+clean-download:clean-download
 clean-download:
 	rm -fr $(TMP_PATH)/php_sources
-clean:
+clean:clean-php-fpm
+clean-php-fpm:
+	rm -fr $(TMP_PATH)/php-fpm build-php-fpm config-php-fpm unzip-php-fpm install-php-fpm
+uninstall: uninstall-php-fpm
+uninstall-php-fpm:
 	rm -fr $(PHP_FPM_DIR)

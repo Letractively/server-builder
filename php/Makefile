@@ -40,8 +40,8 @@ $(PHP_ROOT_PATH)/unzip-php-fpm: $(TMP_PATH)/php_sources
 $(TMP_PATH)/php_sources:
 	$(call download,$(url_php),$@)
 	
-clean-download:clean-download
-clean-download:
+clean-download: clean-download-php-fpm
+clean-download-php-fpm:
 	rm -fr $(TMP_PATH)/php_sources
 clean:clean-php-fpm
 clean-php-fpm:

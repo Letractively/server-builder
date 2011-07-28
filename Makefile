@@ -8,4 +8,5 @@ help:
 	$(call shell_exec,a,b)
 
 include $(ROOT_PATH)/php/Makefile
+include $(ROOT_PATH)/nginx/Makefile
 

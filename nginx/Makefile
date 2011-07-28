@@ -10,7 +10,7 @@ CFLAGS_NGINX:="$(GLOBAL_CFLAGS)"
 OPTION_NGINX:=
 OPTION_NGINX:=$(OPTION_NGINX) --prefix=$(NGINX_DIR)
 OPTION_NGINX:=$(OPTION_NGINX) --conf-path=$(NGINX_DIR)/etc/nginx.conf
-#OPTION_NGINX:=$(OPTION_NGINX) --sbin-path=$(NGINX_DIR)/bin/nginx
+OPTION_NGINX:=$(OPTION_NGINX) --sbin-path=$(NGINX_DIR)/bin/nginx
 
 install-nginx: $(NGINX_ROOT_PATH)/install-nginx
 $(NGINX_ROOT_PATH)/install-nginx: $(NGINX_ROOT_PATH)/build-nginx

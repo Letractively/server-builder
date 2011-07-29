@@ -51,4 +51,4 @@ clean-php-fpm:
 	rm -fr $(TMP_PATH)/php-fpm $(PHP_ROOT_PATH)/build-php-fpm $(PHP_ROOT_PATH)/config-php-fpm $(PHP_ROOT_PATH)/unzip-php-fpm $(PHP_ROOT_PATH)/install-php-fpm
 uninstall: uninstall-php-fpm
 uninstall-php-fpm:
-	rm -fr $(PHP_FPM_DIR)
+	rm -fr $(PHP_FPM_DIR) $(PHP_ROOT_PATH)/install-php-fpm

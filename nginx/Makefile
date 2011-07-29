@@ -15,12 +15,6 @@ OPTION_NGINX:=$(OPTION_NGINX) --sbin-path=$(NGINX_DIR)/bin/nginx
 install-nginx: $(NGINX_ROOT_PATH)/install-nginx
 $(NGINX_ROOT_PATH)/install-nginx: $(NGINX_ROOT_PATH)/build-nginx
 	make -C $(TMP_PATH)/nginx install
-#	cp -f $(TMP_PATH)/nginx/sapi/fpm/init.d.nginx $(NGINX_DIR)/bin/nginx
-#	chmod +x $(NGINX_DIR)/bin/nginx
-#	cp -f $(TMP_PATH)/nginx/nginx.ini-production $(NGINX_DIR)/etc/nginx.ini
-#	mkdir -p $(NGINX_DIR)/etc/nginx.d
-#	cp -f $(NGINX_DIR)/etc/nginx.conf.default $(NGINX_DIR)/etc/nginx.conf
-#	sed -i -e 's/;pid/pid/g' -e 's/;pm.start_servers/pm.start_servers/g' -e 's/;pm.min_spare_servers/pm.min_spare_servers/g' -e 's/;pm.max_spare_servers/pm.max_spare_servers/g' -e 's/;pm.max_requests/pm.max_requests/g' $(NGINX_DIR)/etc/nginx.conf
 	touch $@
 build-nginx: $(NGINX_ROOT_PATH)/build-nginx
 $(NGINX_ROOT_PATH)/build-nginx: $(NGINX_ROOT_PATH)/config-nginx
@@ -45,4 +39,4 @@ clean-nginx:
 	rm -fr $(TMP_PATH)/nginx $(NGINX_ROOT_PATH)/build-nginx $(NGINX_ROOT_PATH)/config-nginx $(NGINX_ROOT_PATH)/unzip-nginx $(NGINX_ROOT_PATH)/install-nginx
 uninstall: uninstall-nginx
 uninstall-nginx:
-	rm -fr $(NGINX_DIR)
+	rm -fr $(NGINX_DIR) $(NGINX_ROOT_PATH)/install-nginx

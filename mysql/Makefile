@@ -25,7 +25,7 @@ install-mysql: $(MYSQL_ROOT_PATH)/install-mysql
 $(MYSQL_ROOT_PATH)/install-mysql: $(MYSQL_ROOT_PATH)/build-mysql
 	make -C $(TMP_PATH)/mysql install
 	mkdir -p $(MYSQL_DIR)/etc
-	cp -f $(MYSQL_DIR)/upport-files/my-small.cnf $(MYSQL_DIR)/etc/my.cnf
+	cp -f $(MYSQL_DIR)/support-files/my-small.cnf $(MYSQL_DIR)/etc/my.cnf
 	touch $@
 build-mysql: $(MYSQL_ROOT_PATH)/build-mysql
 $(MYSQL_ROOT_PATH)/build-mysql: $(MYSQL_ROOT_PATH)/config-mysql
@@ -50,4 +50,4 @@ clean-mysql:
 	rm -fr $(TMP_PATH)/mysql $(MYSQL_ROOT_PATH)/build-mysql $(MYSQL_ROOT_PATH)/config-mysql $(MYSQL_ROOT_PATH)/unzip-mysql $(MYSQL_ROOT_PATH)/install-mysql
 uninstall: uninstall-mysql
 uninstall-mysql:
-	rm -fr $(MYSQL_DIR)
+	rm -fr $(MYSQL_DIR) $(MYSQL_ROOT_PATH)/install-mysql

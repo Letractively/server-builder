@@ -9,4 +9,5 @@ help:
 
 include $(ROOT_PATH)/php/Makefile
 include $(ROOT_PATH)/nginx/Makefile
+include $(ROOT_PATH)/mysql/Makefile
 

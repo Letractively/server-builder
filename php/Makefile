@@ -8,11 +8,13 @@ PHP_FPM_DIR:=$(GLOBAL_PREFIX)/php-fpm
 CFLAGS_PHP_FPM:="$(GLOBAL_CFLAGS)"
 
 OPTION_PHP_FPM:=
+OPTION_PHP_FPM:=$(OPTION_PHP_FPM) --enable-fpm
 OPTION_PHP_FPM:=$(OPTION_PHP_FPM) --prefix=$(PHP_FPM_DIR)
 OPTION_PHP_FPM:=$(OPTION_PHP_FPM) --sysconfdir=$(PHP_FPM_DIR)/etc
 OPTION_PHP_FPM:=$(OPTION_PHP_FPM) --with-config-file-path=$(PHP_FPM_DIR)/etc
 OPTION_PHP_FPM:=$(OPTION_PHP_FPM) --with-config-file-scan-dir=$(PHP_FPM_DIR)/etc/php.d
-OPTION_PHP_FPM:=$(OPTION_PHP_FPM) --enable-fpm
+OPTION_PHP_FPM:=$(OPTION_PHP_FPM) --with-fpm-user=daemon
+OPTION_PHP_FPM:=$(OPTION_PHP_FPM) --with-fpm-group=daemon
 OPTION_PHP_FPM:=$(OPTION_PHP_FPM) --enable-shared
 OPTION_PHP_FPM:=$(OPTION_PHP_FPM) --without-pear
 OPTION_PHP_FPM:=$(OPTION_PHP_FPM) --disable-all

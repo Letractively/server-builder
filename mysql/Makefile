@@ -31,14 +31,16 @@ build-mysql: $(MYSQL_ROOT_PATH)/build-mysql
 $(MYSQL_ROOT_PATH)/build-mysql: $(MYSQL_ROOT_PATH)/config-mysql
 	make -C $(TMP_PATH)/mysql
 	touch $@
+config-mysql: $(MYSQL_ROOT_PATH)/config-mysql
 $(MYSQL_ROOT_PATH)/config-mysql: $(MYSQL_ROOT_PATH)/unzip-mysql
 	cd $(TMP_PATH)/mysql && CFLAGS=$(CFLAGS_MYSQL) CPPFLAGS=$(CFLAGS_MYSQL) cmake . $(OPTION_MYSQL)
 	touch $@
+unzip-mysql: $(MYSQL_ROOT_PATH)/unzip-mysql
 $(MYSQL_ROOT_PATH)/unzip-mysql: $(TMP_PATH)/mysql_sources
 	$(call unzip,$(TMP_PATH)/mysql_sources,$(TMP_PATH)/mysql)
 	touch $@
 
-
+download-mysql: $(TMP_PATH)/mysql_sources
 $(TMP_PATH)/mysql_sources:
 	$(call download,$(url_mysql),$@)
 	

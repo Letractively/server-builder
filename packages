@@ -17,8 +17,10 @@ automake
 libtool
 
 
-#library (*-dev or *-devel)
+#library (lib* or *-dev or *-devel)
 pcre
 zlib
 ncurses
-openssl
+ssl/openssl
+
+libxml2

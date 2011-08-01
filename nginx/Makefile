@@ -21,14 +21,17 @@ build-nginx: $(NGINX_ROOT_PATH)/build-nginx
 $(NGINX_ROOT_PATH)/build-nginx: $(NGINX_ROOT_PATH)/config-nginx
 	make -C $(TMP_PATH)/nginx
 	touch $@
+config-nginx: $(NGINX_ROOT_PATH)/config-nginx
 $(NGINX_ROOT_PATH)/config-nginx: $(NGINX_ROOT_PATH)/unzip-nginx
 	cd $(TMP_PATH)/nginx && CFLAGS=$(CFLAGS_NGINX) ./configure $(OPTION_NGINX)
 	touch $@
+unzip-nginx: $(NGINX_ROOT_PATH)/unzip-nginx
 $(NGINX_ROOT_PATH)/unzip-nginx: $(TMP_PATH)/nginx_sources
 	$(call unzip,$(TMP_PATH)/nginx_sources,$(TMP_PATH)/nginx)
 	touch $@
 
 
+download-nginx: $(TMP_PATH)/nginx_sources
 $(TMP_PATH)/nginx_sources:
 	$(call download,$(url_nginx),$@)
 	

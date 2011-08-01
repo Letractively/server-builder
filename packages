@@ -1,0 +1,24 @@
+
+#network tools
+wget
+
+zip
+unzip
+bzip2
+
+
+
+#compiler tools
+gcc
+g++
+cmake
+imake/gmake
+automake
+libtool
+
+
+#library (*-dev or *-devel)
+pcre
+zlib
+ncurses
+openssl

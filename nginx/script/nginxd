@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Provides:          nginx
+# Default-Start:     2 3 4 5
+
+
+case "$1" in
+start)
+        /opt/nginx/bin/nginx
+	;;
+stop)	
+        /opt/nginx/bin/nginx -s stop
+        ;;
+restart|reload|force-reload)
+        /opt/nginx/bin/nginx -s reload
+        ;;
+status)
+        ;;
+esac
+exit 0
+

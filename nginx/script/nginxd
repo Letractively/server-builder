@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# chkconfig: 2345 61 61
+# description: nginx
+
 # Provides:          nginx
 # Default-Start:     2 3 4 5
 

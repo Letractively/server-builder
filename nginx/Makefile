@@ -15,6 +15,7 @@ OPTION_NGINX:=$(OPTION_NGINX) --sbin-path=$(NGINX_DIR)/bin/nginx
 install-nginx: $(NGINX_ROOT_PATH)/install-nginx
 $(NGINX_ROOT_PATH)/install-nginx: $(NGINX_ROOT_PATH)/build-nginx
 	make -C $(TMP_PATH)/nginx install
+	cp $(NGINX_ROOT_PATH)/script/nginxd $(NGINX_DIR)/bin/
 	touch $@
 build-nginx: $(NGINX_ROOT_PATH)/build-nginx
 $(NGINX_ROOT_PATH)/build-nginx: $(NGINX_ROOT_PATH)/config-nginx

@@ -12,14 +12,14 @@ bzip2
 gcc
 g++
 cmake
-imake/gmake
+make/imake/gmake
 automake
 libtool
 
 
 #library (lib* or *-dev or *-devel)
 pcre
-zlib
+zlib/zip
 ncurses
 ssl/openssl
 

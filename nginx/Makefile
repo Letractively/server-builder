@@ -11,6 +11,8 @@ OPTION_NGINX:=
 OPTION_NGINX:=$(OPTION_NGINX) --prefix=$(NGINX_DIR)
 OPTION_NGINX:=$(OPTION_NGINX) --conf-path=$(NGINX_DIR)/etc/nginx.conf
 OPTION_NGINX:=$(OPTION_NGINX) --sbin-path=$(NGINX_DIR)/bin/nginx
+OPTION_NGINX:=$(OPTION_NGINX) --with-ipv6
+OPTION_NGINX:=$(OPTION_NGINX) --with-poll_module
 
 install-nginx: $(NGINX_ROOT_PATH)/install-nginx
 $(NGINX_ROOT_PATH)/install-nginx: $(NGINX_ROOT_PATH)/build-nginx

@@ -22,5 +22,7 @@ pcre
 zlib/zip
 ncurses
 ssl/openssl
-
+tcl
+curl
+expat
 libxml2

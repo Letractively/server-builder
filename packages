@@ -15,6 +15,7 @@ cmake
 make/imake/gmake
 automake
 libtool
+bison
 
 
 #library (lib* or *-dev or *-devel)
